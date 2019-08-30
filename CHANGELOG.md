@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [UNRELEASED]
 (nothing yet)
 
+## [1.0.1] - 2018-06-16
+### Fixed
+- repo did not include build scripts
+- dev deps audit warnings
+### Changed
+- `dist` transpiling options, not a breaking change
+
 ## [1.0.0] - 2018-06-16
 ### Added
 - first version

@@ -1,5 +1,7 @@
 "use strict";
 
+/* eslint-disable func-names,no-magic-numbers */
+
 const version = process.version.substring(1).split(".");
 const major = Number(version[0]);
 const minor = Number(version[1]);
@@ -11,15 +13,15 @@ const patch = () => {
     if (isPatched || isPatched9 || isPatched8) {
         console.warn(
             "Warning: `node-dns-bugfix` module was required but it is not needed on Node " + process.version
-            + ". Please refer to documentation to learn more."
+            + ". Please refer to documentation to learn more.",
         );
         return;
     }
 
-    const dns = require('dns');
+    const dns = require("dns");
 
-    let resolvesInProgress = 0;
-    let newServers = null;
+    let resolvesInProgress = 0,
+        newServers = null;
 
     // Called when any resolve ends
     const notifyResolveEnd = function() {
@@ -49,7 +51,7 @@ const patch = () => {
             originalResolve.apply(this, [...args, function(...callbackArgs) {
                 resolvesInProgress--;
                 notifyResolveEnd(); // notify that resolve ended, update dns if needed before calling original callback
-                callback.apply(this, callbackArgs);
+                callback.apply(this, callbackArgs); // eslint-disable-line no-invalid-this
             }]);
         };
     });
@@ -66,7 +68,6 @@ const patch = () => {
         // if something is in progress just store the value for later set
         newServers = servers;
     };
-
 };
 
 patch();

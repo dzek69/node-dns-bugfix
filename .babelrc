@@ -1,14 +1,14 @@
 {
-  "presets": [
-    [
-      "env",
-      {
-        "targets": {
-          "browsers": [
-            "last 2 versions", "> 5%", "ie > 9"
-          ]
-        }
-      }
+    "presets": [
+        [
+            "@babel/env",
+            {
+                "targets": {
+                    "node": 4
+                },
+                "useBuiltIns": "entry",
+                "corejs": 2
+            }
+        ]
     ]
-  ]
 }
